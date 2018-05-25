@@ -1,0 +1,44 @@
+
+%\gls{linux} % displays name field of the linux entry (in this case "Linux")
+%\useGlosentry{linux}{GNU/Linux} % displays "GNU/Linux"
+%\GNU % displays "GNU's Not Unix (GNU)" the first time this is used
+%\GNU % displays "GNU" all subsequent times
+% NB: remember to use \GNU\ if want to retain the space after the acronym
+
+% % TO COMPILE: makeindex -s thesis.ist -t thesis.glg -o thesis.gls thesis.glo
+%% makeindex -s thesis.ist -t thesis.alg -o thesis.acr thesis.acn
+
+% ACRONYMS
+\newglossaryentry{ANN}{name={Artificial Neural Network (ANN)}, description={A mathematical model consisting of an interconnected group of artificial neurons. The information is processed by using a connectionist approach. In this thesis, only feed-forward neural networks are used. In feed-forward neural networks, the information moves in only one direction (forward) from the input, through the hidden to the output nodes without recurring cycles}}
+\newglossaryentry{DSSP}{name={Dictionary of Secondary Structure in Proteins (DSSP)},description={The standard method for assigning secondary structure of a protein, given the 3D atomic coordinates}}
+\newglossaryentry{CASP}{name={CASP},description={Critical Assessment of Techniques for Protein Structure Prediction. A community-wide experiment for protein structure prediction. It aims at establishing the current state of the art, identifying what progress has been made, and highlighting where future effort may be most productively focused}}
+\newglossaryentry{FANN}{name={Fast Artificial Neural Network Library (FANN)},description={A free open source neural network library, which implements multilayer artificial neural networks in C programming language with support for both fully and sparsely connected networks. It includes a framework for easy handling of training data sets. \\
+For more details see \href{http://leenissen.dk/fann/}{http://leenissen.dk/fann/}}}
+\newglossaryentry{FM}{name={Free Modelling (FM)},description={A category of raw quality models, called free models,  obtained typically by using \emph{ab initio} or \emph{novel fold} prediction methods}}
+\newglossaryentry{FRST}{name={Function of Rapdf, Solvation and Torsion potentials (FRST)},description={A MQAP method that predicts the model quality by using the pairwise, solvation, hydrogen bond, and torsion angle potentials. FRST was ranked 1st of 16 other MQAP methods in CASP-4, in 2004}}
+\newglossaryentry{GDT}{name={Global Distance Test (GDT)},description={Also called Global Distance Test Total Score (GDT\_TS). A measure of similarity, adopted by CASP, between two protein structures with identical amino acid sequences but different tertiary structures. GDT\_TS is computed as $GDT\_TS = \frac{GDT\_P1 + GDT\_P2 + GDT\_P4 + GDT\_P8}{4}$ where $GDT\_Pn$ denotes percent of residues' carbon alpha atoms superimposed under distance cutoff less than $n$ \AA{}}}
+\newglossaryentry{GIT}{name={Gauss Integrals Tuned (GIT)},description={A tool, developed by Peter R\o gen, for the description, comparison and classification of three-\-di\-men\-sio\-nal protein structures}}
+\newglossaryentry{HQM}{name={High Quality Modelling (HQM)},description={A category of high quality models}}
+\newglossaryentry{MQAP}{name={Model Quality Assessment Program (MQAP)},description={A program used to assess the quality of a protein model without any information about its corresponding native structure}}
+\newglossaryentry{MSE}{name={Mean Squared Error (MSE)},description={A way to quantify the amount by which an estimator differs from the true value of the quantity being estimated. On details, it is defined as the mean difference between actual and predicted values: $MSE = \frac{1}{n}\sum_{i=1}^{n}(a_i - p_i)^2$ where $n$ is the number of samples, while $a_i$ and $p_i$ correspond to the true and predicted values for the $i$-th sample respectively. The MSE can also be written as the sum of the squared bias and variance of the estimator $f(x)$: $MSE(f(x)) = Bias^2(f(x)) + Var(f(x))$. The neural network performance can be improved if both the bias and variance are reduced. However, a neural network that fits closely the provided training examples has a low bias but high variance. On the other hand, a variance reduction leads to decrease the level of fitting the data. For this reason it needs a trade-off between bias and variance}}
+\newglossaryentry{NMR}{name={Nuclear Magnetic Resonance (NMR)},description={NMR spectoscopy is an experimental method which allows to determine the structure of a protein in solution}}
+\newglossaryentry{PDB}{name={Protein Data Bank (PDB)},description={A textual file format describing the three-\-di\-men\-sio\-nal protein structures stored in the Protein Data Bank (\href{http://www.rcsb.org/pdb}{http://www.rcsb.org/pdb}). It provides a rich description and annotation of protein properties like the protein name, the method used to obtain the pdb file, author names, annotations and the protein sequence. Then, for each atom, it reports its name, 3D atom coordinates, temperature factor and occupancy}}
+\newglossaryentry{QMEAN}{name={Qualitative Model Energy ANalysis (QMEAN)},description={A single-model quality assessment program which defines the quality of a model as a weighed linear combination of statistical potentials}}
+\newglossaryentry{RMSD}{name={Root Mean Square Deviation (RMSD)},description={A measure of the average distance between the backbones after having applied an optimal rigid body superposition}}
+\newglossaryentry{SVM}{name={Support Vector Machine (SVM)},description={A supervised learning method used for classification and regression. In classification problems, input data are viewed as two sets of vectors in a n-dimensional space, and a SVM constructs a separating hyperplane in that space, maximizing the margin between the two data sets}}
+\newglossaryentry{SVR}{name={Support Vector Regression (SVR)},description={A modified SVM used for regression problems. Differently from the classification problem in which the input data is categorized into two or more classes, in this case, each input data vector is associated to a real value (e.g. in $[0, 1]$) and the SVM tries to predict that value}}
+\newglossaryentry{TBM}{name={Template-Based Modelling (TBM)},description={A category of medium quality models, called template-based models, obtained typically by using comparative modelling or fold recognition prediction methods}}
+\newglossaryentry{VICTOR}{name={VIrtual Construction TOol for pRoteins (VICTOR)},description={A library of bioinformatics tools. Web Services using the VICTOR library are available at \href{http://protein.bio.unipd.it/services.shtml}{http://protein.bio.unipd.it/services.shtml}}}
+
+
+
+
+
+% GLOSSARY
+\newglossaryentry{amino_acid}{name={Amino Acid}, description={Also called residue. A body composed of a carboxyl group, an amino group and a side chain. In amino acids, bond lengths and bond angles between atoms are fixed. The carbon atom carrying the side chain is usually referred to as $C_\alpha$. The other atoms building the side chain are commonly called $\beta$, $\gamma$, $\delta$, $\varepsilon$ and $\zeta$ starting from the $\alpha$ carbon atom}}
+\newglossaryentry{bias}{name={Bias}, description={The complexity restriction that the neural network architecture imposes on the degree of accurate fitting for the target function. The bias of an estimator $f(x) \approx E[y \arrowvert x]$ is $Bias(f(x)) = E_D[f(x)] - E[y \arrowvert x]$ where $D$ is the training data}}
+\newglossaryentry{hydrogen_bond}{name={Hydrogen Bond}, description={The attractive force existing between the hydrogen covalently bonded to an electronegative atom of one molecule and an electronegative atom of a different molecule. Hydrogen bonds are a responsible component of the folding process}}
+\newglossaryentry{model}{name={Model}, description={A predicted tertiary structure of a target sequence}}
+\newglossaryentry{native_structure}{name={Native Structure}, description={The real tertiary structure of a protein. Native structures are found by X-Ray and NMR experimental methods}}
+\newglossaryentry{target}{name={Target}, description={An amino acid sequence from which protein models are generated}}
+\newglossaryentry{variance}{name={Variance}, description={The deviation of the neural network learning efficacy from one data sample to another sample that could be described by the same target function model. The variance of an estimator $f(x)$ is defined as $Var(f(x)) = E_D[(f(x) - E_D[f(x)])^2]$ where $D$ is the training data}}

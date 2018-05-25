@@ -1,0 +1,9 @@
+*/**/.directory
+*.aux
+*.log
+*.out
+*.tex.backup
+*.toc
+ms_thesis/*.pdf
+phd_thesis/*.pdf
+*~

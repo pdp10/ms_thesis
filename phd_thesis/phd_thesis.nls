@@ -1,0 +1,178 @@
+\begin{thenomenclature} 
+
+ \nomgroup{A}
+
+  \item [{$\Psi$m}]\begingroup Mitochondrial (mt) membrane potential.\nomeqref {0}
+		\nompageref{xiv}
+  \item [{4E-BP}]\begingroup 4E-binding protein\nomeqref {0}
+		\nompageref{xiv}
+  \item [{AIC}]\begingroup Akaike information criterion\nomeqref {0}
+		\nompageref{xiv}
+  \item [{AMP}]\begingroup Adenosine monophosphate\nomeqref {0}
+		\nompageref{xiv}
+  \item [{AMPK}]\begingroup Adenosine monophosphate-activated protein kinase\nomeqref {0}
+		\nompageref{xiv}
+  \item [{ATP}]\begingroup Adenosine 5′-triphosphate\nomeqref {0}
+		\nompageref{xiv}
+  \item [{BDNF}]\begingroup Brain-derived neurotrophic factor\nomeqref {0}
+		\nompageref{xiv}
+  \item [{BIC}]\begingroup Bayesian information criterion\nomeqref {0}
+		\nompageref{xiv}
+  \item [{CaMKIII}]\begingroup Calcium-calmodulin type III kinase\nomeqref {0}
+		\nompageref{xiv}
+  \item [{CR}]\begingroup Caloric restriction\nomeqref {0}
+		\nompageref{xiv}
+  \item [{CS}]\begingroup Cowden syndrome\nomeqref {0}\nompageref{xiv}
+  \item [{CV}]\begingroup Coefficient of variance\nomeqref {0}
+		\nompageref{xiv}
+  \item [{DAP1}]\begingroup Death-associated protein 1\nomeqref {0}
+		\nompageref{xiv}
+  \item [{eEF2K}]\begingroup Eukaryotic elongation factor-2 kinase\nomeqref {0}
+		\nompageref{xiv}
+  \item [{EGF}]\begingroup Epidermal growth factor\nomeqref {0}
+		\nompageref{xiv}
+  \item [{eIF4A-G}]\begingroup Eukaryotic initiation factor 4A-G\nomeqref {0}
+		\nompageref{xiv}
+  \item [{EP}]\begingroup Evolutionary programming algorithm\nomeqref {0}
+		\nompageref{xiv}
+  \item [{EPO}]\begingroup Erythropoietin\nomeqref {0}\nompageref{xiv}
+  \item [{FKBP}]\begingroup FK506-binding protein\nomeqref {0}
+		\nompageref{xiv}
+  \item [{FoxO}]\begingroup Forkhead box family, subclass O\nomeqref {0}
+		\nompageref{xiv}
+  \item [{GA}]\begingroup Genetic algorithm\nomeqref {0}
+		\nompageref{xiv}
+  \item [{GAB1}]\begingroup Grb2-associated binder 1\nomeqref {0}
+		\nompageref{xiv}
+  \item [{GAP}]\begingroup GAPase-activating protein\nomeqref {0}
+		\nompageref{xiv}
+  \item [{GAPDH}]\begingroup Glyceraldehyde-3-phosphate dehydrogenase\nomeqref {0}
+		\nompageref{xiv}
+  \item [{GDP}]\begingroup Guanosine diphosphate\nomeqref {0}
+		\nompageref{xiv}
+  \item [{GEF}]\begingroup Guanine nucleotide-exchange factors\nomeqref {0}
+		\nompageref{xiv}
+  \item [{GRB}]\begingroup Growth factor receptor-bound protein\nomeqref {0}
+		\nompageref{xiv}
+  \item [{GS}]\begingroup Glycogen syhthase\nomeqref {0}
+		\nompageref{xiv}
+  \item [{GSK-3}]\begingroup Glycogen syhthase kinase 3\nomeqref {0}
+		\nompageref{xiv}
+  \item [{GTP}]\begingroup Guanosine-5'-triphosphate\nomeqref {0}
+		\nompageref{xiv}
+  \item [{HIF}]\begingroup Hypoxia-inducible factor\nomeqref {0}
+		\nompageref{xiv}
+  \item [{HM}]\begingroup Hydrophobic motif\nomeqref {0}
+		\nompageref{xiv}
+  \item [{IGF}]\begingroup Insulin growth factor\nomeqref {0}
+		\nompageref{xiv}
+  \item [{IIS}]\begingroup Insulin and insulin-like signalling\nomeqref {0}
+		\nompageref{xiv}
+  \item [{IR}]\begingroup Insulin receptor\nomeqref {0}\nompageref{xiv}
+  \item [{IRS}]\begingroup Insulin receptor substrate\nomeqref {0}
+		\nompageref{xiv}
+  \item [{JNK}]\begingroup c-Jun N-terminal kinase\nomeqref {0}
+		\nompageref{xiv}
+  \item [{LKB1}]\begingroup Liver kinase B1\nomeqref {0}
+		\nompageref{xiv}
+  \item [{LM}]\begingroup Levenberg-Marquardt algorithm\nomeqref {0}
+		\nompageref{xiv}
+  \item [{LV}]\begingroup Las Vegas methods\nomeqref {0}
+		\nompageref{xiv}
+  \item [{MC}]\begingroup Monte Carlo methods\nomeqref {0}
+		\nompageref{xiv}
+  \item [{MDM2}]\begingroup Murine double minute 2\nomeqref {0}
+		\nompageref{xiv}
+  \item [{MOTA}]\begingroup Mean optimal transformations analysis\nomeqref {0}
+		\nompageref{xiv}
+  \item [{mSIN1}]\begingroup Mammalian stress-activated protein kinase interacting protein 1\nomeqref {0}
+		\nompageref{xiv}
+  \item [{mtDNA}]\begingroup Mitochondrial DNA\nomeqref {0}
+		\nompageref{xiv}
+  \item [{mTOR}]\begingroup Mammalian target of Rapamycin\nomeqref {0}
+		\nompageref{xiv}
+  \item [{mTORC1}]\begingroup Mammalian target of Rapamycin complex 1\nomeqref {0}
+		\nompageref{xiv}
+  \item [{mTORC2}]\begingroup Mammalian target of Rapamycin complex 2\nomeqref {0}
+		\nompageref{xiv}
+  \item [{NF-$\kappa$B}]\begingroup Nuclear factor kappa-light-chain-enhancer of activated B cells\nomeqref {0}
+		\nompageref{xiv}
+  \item [{NFL}]\begingroup p70-S6K-induced negative feedback loop\nomeqref {0}
+		\nompageref{xiv}
+  \item [{ODE}]\begingroup Ordinary differential equation\nomeqref {0}
+		\nompageref{xiv}
+  \item [{p.i.}]\begingroup Post-induction\nomeqref {0}\nompageref{xiv}
+  \item [{p70-S6K}]\begingroup p70 ribosomal S6 kinase\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PDK1}]\begingroup Phosphoinositide-dependent protein kinase 1\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PGC-1$\alpha/\beta$}]\begingroup Peroxisome proliferator-activated receptor-$\gamma$ coactivator\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PH}]\begingroup Pleckstrin homology\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PI(3,4)P2}]\begingroup phosphatidylinositol (3,4)-bisphosphate\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PI(3,4,5)P3}]\begingroup phosphatidylinositol (3,4,5)-trisphosphate\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PI(4,5)P2}]\begingroup phosphatidylinositol (4,5)-bisphosphate\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PI3K}]\begingroup Phosphoinositide 3-kinases\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PIKK}]\begingroup Phosphatidylinositol kinases\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PJS}]\begingroup Peutz-Jeghers syndrome\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PKB}]\begingroup Protein kinase B, also Akt\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PKC}]\begingroup Protein kinase C\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PRAS40}]\begingroup Proline-rich Akt substrate of 40 kDa\nomeqref {0}
+		\nompageref{xiv}
+  \item [{PTEN}]\begingroup Phosphatase and tensin homologue\nomeqref {0}
+		\nompageref{xiv}
+  \item [{Raptor}]\begingroup Regulatory-associated protein of mTOR\nomeqref {0}
+		\nompageref{xiv}
+  \item [{Rheb}]\begingroup Ras-homolog enriched in brain\nomeqref {0}
+		\nompageref{xiv}
+  \item [{Rictor}]\begingroup Rapamycin-insensitive companion of mTOR\nomeqref {0}
+		\nompageref{xiv}
+  \item [{ROS}]\begingroup Reactive oxygen species\nomeqref {0}
+		\nompageref{xiv}
+  \item [{RSK}]\begingroup p90 ribosomal S6 kinase\nomeqref {0}
+		\nompageref{xiv}
+  \item [{SA}]\begingroup Simulated annealing algorithm\nomeqref {0}
+		\nompageref{xiv}
+  \item [{SBGN}]\begingroup Systems biology graphical notation\nomeqref {0}
+		\nompageref{xiv}
+  \item [{SBML}]\begingroup Systems biology markup language\nomeqref {0}
+		\nompageref{xiv}
+  \item [{SD}]\begingroup Steepest descent algorithm\nomeqref {0}
+		\nompageref{xiv}
+  \item [{SGK}]\begingroup Serum- and glucocorticoid-inducible kinase\nomeqref {0}
+		\nompageref{xiv}
+  \item [{SH3BP4}]\begingroup SH3 domain-binding protein 4\nomeqref {0}
+		\nompageref{xiv}
+  \item [{SIRT1}]\begingroup NAD-dependent deacetylase sirtuin-1\nomeqref {0}
+		\nompageref{xiv}
+  \item [{SREBP}]\begingroup Sterol regulatory element binding protein\nomeqref {0}
+		\nompageref{xiv}
+  \item [{TGF-$\beta$}]\begingroup Transforming Growth Factor $\beta$\nomeqref {0}
+		\nompageref{xiv}
+  \item [{TN}]\begingroup Truncated-Newton algorithm\nomeqref {0}
+		\nompageref{xiv}
+  \item [{TNF-$\alpha$}]\begingroup Tumour necrosis factor $\alpha$\nomeqref {0}
+		\nompageref{xiv}
+  \item [{TR}]\begingroup Trust region algorithm\nomeqref {0}
+		\nompageref{xiv}
+  \item [{TSC1/TSC2}]\begingroup Tuberous sclerosis complex\nomeqref {0}
+		\nompageref{xiv}
+  \item [{TSCS}]\begingroup Tuberous sclerosis complex syndrome\nomeqref {0}
+		\nompageref{xiv}
+  \item [{ULK1}]\begingroup Serine/threonine-protein kinase ULK1\nomeqref {0}
+		\nompageref{xiv}
+  \item [{VEGF}]\begingroup Vascular endothelial growth factor\nomeqref {0}
+		\nompageref{xiv}
+  \item [{VHL}]\begingroup Von Hippel-Lindau\nomeqref {0}
+		\nompageref{xiv}
+
+\end{thenomenclature}

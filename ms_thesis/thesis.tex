@@ -1,0 +1,145 @@
+\documentclass[12pt,a4paper,twoside,openright,titlepage]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english,italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,top=3cm,bottom=2.5cm,left=4cm,right=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{indentfirst}
+\usepackage{amsmath,amssymb,amsfonts} % Typical maths resource packages
+\usepackage{numprint}
+\usepackage[signatures,nowrite]{frontispiece} 
+\graphicspath{{images/}}  % to include more paths: \graphicspath{{images_1/},{images_2/}}
+%\DeclareGraphicsExtensions{.png, .pdf, .jpeg, .EPS} % image extensions
+\usepackage{listings}
+\lstset{language=C++,basicstyle=\small\ttfamily}
+\usepackage[plainpages=false,pdfauthor={Piero Dalle Pezze},pdftitle={Master's Degree Thesis},pdftex]{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue} % set colorlinks to true to enable colors (to remove for printing purposes)
+\usepackage{url}
+\usepackage[all]{hypcap}
+\usepackage{subfigure}
+\usepackage{color}
+\usepackage{textcomp} % to use \textdegree
+\usepackage{setspace}
+\usepackage[small]{caption}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\makeindex
+
+
+% to remove titles in the empty page at the end of a chapter
+\let\origcleardoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{
+  \clearpage
+  {\pagestyle{empty}\origcleardoublepage}
+}
+\let\cleardoublepage\clearemptydoublepage
+
+
+% TO COMPILE run:
+% makeindex -s thesis.ist -t thesis.glg -o thesis.gls thesis.glo
+\usepackage[style=altlist]{glossaries}
+\makeglossary
+\include{glossary}
+
+% to customize header and footer of the page
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\newcommand{\fncyblank}{\fancyhf{}}
+
+
+%\title{Tesi di laurea Specialistica}
+%\author{Piero Dalle Pezze} 
+%\date{\today}
+
+
+% figures: h, t (top), b (bottom), p (page). keep only t e b.
+
+%hyphenation
+\hyphenation{QMEAN-rannZ QMEAN-eannZ QMEAN-clust QMEAN-clustZ QMEAN-rann-clustZ QMEAN-eann-clustZ}
+
+\begin{document}
+
+	% page numbers and title will be located in the header of the page
+ 	\pagestyle{headings}
+	\pagenumbering{roman}
+	\begin{frontispiece}
+	\end{frontispiece}
+	
+	% Setting the linespread (\usepackage{setspace})
+	%\singlespacing
+	\onehalfspacing
+	%\doublespacing
+	
+	% the a short acknowledgment
+	\begin{flushright}
+		\cleardoublepage\null\vspace{\stretch{1}}
+		\emph{Auf heimlich err\"othender Wange\\
+		Leuchtet des Herzens Gl\"uhen}\\
+		-- \textbf{S{\o}ren Kierkegaard}
+		\vspace{\stretch{2}}\null
+	\end{flushright}
+	
+	\include{chapters/acknowledgments}
+	
+	% Abstract
+	\newenvironment{abstract}
+	{\cleardoublepage\fncyblank\null\vfill\begin{center}
+	\bfseries\abstractname
+	\end{center}}
+	{\vfill\null}
+	\selectlanguage{english}	
+	\addcontentsline{toc}{chapter}{Abstract}		
+	\begin{abstract}
+The Model Quality Assessment Programs (MQAP) are assuming a crucial role in protein structure prediction. Clustering structure prediction methods have higher accuracy than individual structure prediction algorithms, although the first ones tend to fail if the best models are far from the center of the main cluster. In this work, a new hybrid clustering-based algorithm considers scores computed by another MQAP method to improve the accuracy. Two new individual methods whose scoring functions are based on neural networks are implemented for this purpose and used as support to the clustering assessment. Features from the QMEAN statistical potentials, Gauss invariants, hydrogen bonds and TAP score are used for these new methods. \\
+CASP, which stands for Critical Assessment of Techniques for Protein Structure Prediction, is a community-wide experiment for protein structure prediction and aims to establish the current state of the art, identifying what progress has been made, and highlighting where future effort may be most productively focused. The clustering-based and individual methods developed in this work are tested on data from the CASP-4 and CASP-8 experiments, showing a significative improvement. The new hybrid clustering algorithm outperforms all other candidate methods at CASP-8, held in December 2008, achieving a global Pearson correlation between predicted quality score and GDT\_TS of $0.9485$ over $117$ targets for a total of $29,064$ models. Moreover, the individual methods based only on the QMEAN features outperform significatively the standard version of QMEAN.	
+\end{abstract}
+	
+	
+       % Italian abstract
+       	\selectlanguage{italian}
+	\addcontentsline{toc}{chapter}{Sommario}
+	\begin{abstract}
+I programmi per la valutazione della qualit\`a dei modelli (MQAP) stanno assumendo un ruolo cruciale nella predizione della struttura delle proteine. I metodi predittivi basati su clustering presentano un'accuratezza migliore rispetto a quelli basati su singolo modello, sebbene i primi tendano a fallire quando i modelli migliori sono molto distanti dal centro del cluster primario. In questo lavoro un nuovo algoritmo ibrido basato su clustering considera i punteggi computati da un altro MQAP per migliorare l'accuratezza. Due nuovi metodi individuali, le cui funzioni di valutazione sono basate su reti neurali, sono stati implementati a tale scopo e usati come supporto alla valutazione del clustering. Questi nuovi metodi sfruttano i potenziali statistici di QMEAN, gli integrali Gaussiani, i ponti di idrogeno e il TAP score. \\
+Il CASP, che corrisponde a Critical Assessment of Techniques for Protein Structure Prediction, \`e un esperimento di interesse internazionale per la predizione delle strutture proteiche e si propone di stabilire l'attuale stato dell'arte, identificando il progresso ottenuto, e di indirizzare la ricerca futura. I metodi basati su clustering e quelli basati su reti neurali, sviluppati in questa tesi, sono stati testati sui dati provenienti dagli esperimenti del CASP-4 e del CASP-8, evidenziando un miglioramento significativo. Il nuovo algoritmo ibrido basato su clustering supera tutti gli altri metodi candidati al CASP-8, svolto a Dicembre del 2008, ottenendo una correlazione globale di Pearson tra il punteggio di qualit\`a predetto e il valore GDT\_TS di $0.9485$ su $117$ sequenze target per un totale di $29.064$ modelli. Inoltre, i metodi individuali basati solamente sui parametri utilizzati da QMEAN migliorano significativamente la versione standard di QMEAN.
+	\end{abstract}
+       	\selectlanguage{english}	
+	
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\printglossary[nonumberlist]
+	\addcontentsline{toc}{chapter}{Glossary}			
+	
+	\cleardoublepage
+	\pagenumbering{arabic}
+	
+	\mainmatter
+	\include{chapters/introduction}
+	\include{chapters/protein_structure_and_prediction}
+	\include{chapters/materials_methods}
+	\include{chapters/results}
+	\include{chapters/conclusions}
+	
+	
+	
+	% if using TeXShop
+	% 1) In the menu line, choose Typeset > LaTeX or, equivalently, press <apple key>+T. You get the pdf file in a new window.
+	% 2) Now choose Typeset > BibTeX. You see the console window with messages given by BibTeX.
+	% 3) Go back to the tex or pdf windows and repeat 1).
+	% 4) Repeat 1) again and you are done.
+	% Every new change in the bib files should be followed by that cycle in order to include the modifications in the document.
+	% Bibliography
+	\clearpage
+	\bibliography{biblio}
+	\bibliographystyle{plain}
+	\addcontentsline{toc}{chapter}{Bibliography}
+	
+	
+	% Appendix
+	\appendix
+	\include{chapters/appendix_ff_sp}
+	\include{chapters/appendix_gi}
+
+\end{document}

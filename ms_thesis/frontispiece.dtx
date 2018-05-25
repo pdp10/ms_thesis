@@ -1,0 +1,1586 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2008 by Piero Dalle Pezze 
+% <piero dot dallepezze at gmail dot com>
+% -------------------------------------------------------
+% 
+% This file may be distributed and/or modified under the conditions of
+% the LaTeX Project Public License, either version 1.2 of this license
+% or (at your option) any later version.  The latest version of this
+% license is in:
+%
+%    http://www.latex-project.org/lppl.txt
+%
+% and version 1.2 or later is part of all distributions of LaTeX
+% version 1999/12/01 or later.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{frontispiece.dtx}
+%</driver>
+%<package>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<package>\ProvidesPackage{frontispiece}
+%<*package>
+  [2009/01/27 1.0 (Piero Dalle Pezze)]
+%</package>
+%<*driver>
+\PassOptionsToClass{a4paper}{article} % we need a4paper
+\documentclass{ltxdoc}
+\usepackage[english]{babel}
+\usepackage{graphicx,array,booktabs}
+\usepackage{frontispiece}
+
+\newcommand{\pack}{\textsf}
+\newcommand{\env}{\texttt}
+\newcommand{\file}{\texttt}
+\newcommand{\cmdname}[1]{\texttt{\char`\\#1}}
+\newcommand{\opt}[1]{``\texttt{#1}''}
+\newcommand{\frontcommand}[3][f]{%
+  \subsection*{\cmdname{#2}#3%
+  \ifx#1o%
+    ~(*)%
+  \else
+  \ifx#1s%
+    ~(\textdagger)%
+  \fi\fi}%
+}
+\newcommand{\0}[1]{\ttchar[\meta{#1}\ttchar]}
+\newcommand{\1}[1]{\ttchar\{\meta{#1}\ttchar\}}
+\renewcommand{\meta}[1]{$\langle$\textit{\mdseries #1}$\rangle$}
+\newcommand{\ttchar}[1]{{\ttfamily\char`#1}}
+\newcommand{\frontoption}[1]{\subsection*{\texttt{#1}}}
+\newcommand{\includeex}[1]{\par\vfill\begin{center}
+  \setlength{\fboxsep}{0pt}\fbox{\includegraphics[scale=.3]{#1}}
+\end{center}}
+
+\DeclareRobustCommand\Xe{%
+  \leavevmode X\lower0.5ex
+   \hbox{\kern-0.15em\reflectbox{E}}\kern-0.15em}
+
+\EnableCrossrefs         
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{frontispiece.dtx}
+\end{document}
+
+\begin{verbatim}
+pdflatex thesis
+pdflatex thesis-frn
+pdflatex thesis
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% e, alla fine, il frontispiece sar\`a al suo posto. Nel seguito, il 
+% documento che contiene i dati per comporre il frontispiece sar\`a 
+% chiamato \file{frn}. Nel caso si usi \file{latex} e non 
+% \file{pdflatex}, la sequenza di comandi \`e
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+latex thesis
+latex thesis-frn
+dvips -o thesis-frn.eps thesis-frn
+latex thesis
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% Se la classe \`e chiamata con l'opzione \opt{oneside}, il frontispiece
+% occupa correttamente solo la prima; nel caso di \opt{twoside}, viene
+% prodotta una pagina bianca.  \`E meglio con \opt{twoside}, naturalmente:
+% scrivere solo fronte \`e uno spreco di carta, cos\`i come con interlinea
+% maggiorata.
+% 
+% \`E possibile usare il pacchetto anche per includere un frontispiece 
+% creato con altri sistemi, si veda pi\`u avanti la descrizione 
+% dell'opzione \opt{onlyinclude}
+% 
+% \section{Uso}
+% 
+% Il documento va impostato con l'opzione \opt{titlepage} e va caricato
+% il pacchetto \pack{frontispiece}: per esempio
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\documentclass[a4paper,titlepage]{book}
+\usepackage[english]{babel}
+\usepackage[<opzioni>]{frontispiece}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% L'opzione \opt{titlepage} \`e normalmente attiva per la classe 
+% \pack{book}, ma non lo \`e per la classe \pack{report}.
+% 
+% Sono previste due opzioni principali: \opt{sans} e \opt{nowrite}.  La
+% prima compone il frontispiece in caratteri senza grazie, la seconda
+% serve a evitare la scrittura o riscrittura del documento \file{frn},
+% ovviamente solo quando esso \`e definitivo o quando non ci interessa
+% produrlo.
+% 
+% Vediamo un tipico frontispiece.  Dopo \verb|\begin{document}| vanno
+% dati i comandi seguenti:
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\begin{frontispiece}
+\NCandidate {Laureando}
+\Logo [1.5cm]{logo_padova}
+\Titoletto{Tesi di Laurea Specialistica}
+\University {Padova}
+\Department {Scienze MM. FF. NN.}
+\Course [Laurea Specialiastica]{Informatica}
+\Title {TITLE - bla bla bla}
+\Candidate {Piero Dalle Pezze}
+\Advisor {Ch.mo Prof.~Silvio C. E. Tosatto}
+\NAdvisor {Coordinatore}{}
+\Academicyear {2008-2009}
+\end{frontispiece}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% Si possono dare quanti relatori e correlatori si vuole; basta
+% scriverli uno dopo l'altro come argomenti di comandi \verb|\Advisor|
+% o \verb|\Coadvisor|.\footnote{Aggiungere i titoli onorifici o
+% professionali, mi raccomando!  Altrimenti i chiarissimi professori
+% potrebbero offendersi.~\texttt{:-)}} Il correlatore \`e colui che
+% collabora alla direzione del lavoro di thesis, non quello che fa le
+% pulci alla thesis stessa prima dell'esame finale, propriamente
+% \emph{controrelatore}, il cui nome \emph{non} va nel frontispiece.
+% 
+% Si pu\`o anche non indicare il nome del relatore; questo pu\`o capitare 
+% probabilmente per le thesis di dottorato. Basta allora dare l'opzione 
+% \opt{noadvisor} al pacchetto.
+% 
+% Descriveremo pi\`u avanti, in dettaglio, i vari comandi disponibili.
+% Notiamo subito che l'ordine in cui sono dati \`e irrilevante.
+% 
+% Con l'opzione \opt{onlyinclude}, nessuno dei comandi descritti pi\`u
+% avanti \`e disponibile.  Si pu\`o usare solo il comando
+% \cmdname{includefront} che prende come argomento il nome del documento
+% che contiene il frontispiece.  Questo deve essere in formato
+% \textsc{iso}~A4.  Il comando ha anche un argomento opzionale per
+% rimettere in ordine i numeri di pagina, che deve essere un numero
+% piccolo (fra $0$ e $9$).
+% 
+% Un'altra opzione \`e \opt{signatures}, che lascia fra i nomi dei
+% relatori lo spazio per le loro firme.  Questa opzione pu\`o essere
+% aggiunta direttamente al documento~\file{frn}: il mio consiglio \`e di
+% duplicarlo, aggiungere l'opzione, compilarlo e usarne la stampa solo
+% per la copia da far firmare al relatore.
+% 
+% Con l'opzione \opt{norules} si eliminano i filetti dal frontispiece 
+% che normalmente vengono disegnati fra il nome dell'ateneo e quello 
+% della facolt\`a e sopra l'indicazione dell'anno accademico.
+% 
+% 
+% \section{Le opzioni}
+% 
+% Raccolgo qui le opzioni gi\`a descritte, per un pi\`u facile riferimento. 
+% Quando due opzioni sono separate da~`$\mid$', la prima \`e quella 
+% valida normalmente.
+% 
+% \frontoption{write${}\mid{}$nowrite}%
+% Mutuamente esclusive.  Con la seconda si inibisce la scrittura del
+% documento~\file{frn}.
+% 
+% \frontoption{signatures}%
+% Nel campo dedicato a relatori e correlatori vengono lasciati gli spazi
+% per le firme.
+% 
+% \frontoption{noadvisor}%
+% Non viene stampato il campo dedicato a relatori e correlatori.
+% 
+% \frontoption{normal${}\mid{}$sans}%
+% Mutuamente esclusive. Con la seconda si sceglie per il frontispiece 
+% un carattere senza grazie; questo carattere pu\`o essere determinato 
+% usando un comando del tipo
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Preamble{\usepackage{helvet}}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \frontoption{norules}%
+% Non vengono inseriti filetti nel frontispiece; senza questa opzione 
+% un filetto separa il nome dell'ateneo da quello della facolt\`a e un 
+% altro viene disegnato sopra l'indicazione dell'anno accademico.
+% 
+% \frontoption{onlyinclude}%
+% Definisce il comando \cmdname{includefront} e disabilita l'ambiente 
+% \env{frontispiece}. Serve per includere un frontispiece preparato con 
+% altri metodi; deve essere un file grafico che sia fra quelli
+% gestibili con \cmdname{includegraphics} e deve avere formato 
+% \textsc{iso}~A4.
+% 
+% \frontoption{driver=$\langle\mathit{driver}\rangle$}%
+% Imposta la chiamata di \pack{graphicx} nel documento~\file{frn} per
+% l'uso di un driver diverso da \texttt{dvips} o \texttt{pdftex}, per 
+% esempio \verb|driver=dvipdfm| oppure \verb|driver=textures|.
+% 
+% \bigskip
+% 
+% \emph{Attenzione}: ogni altra opzione data a \pack{frontispiece} produrr\`a
+% il messaggio di errore
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+! Use of \front@temp doesn't match its definition.
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \section{I comandi}
+% 
+% Alcuni comandi sono obbligatori: \`e necessario specificare
+% l'istituzione e la sua divisione (facolt\`a o dipartimento) presso la
+% quale si discute la thesis; ovviamente occorrono anche il titolo e
+% l'autore, cio\`e il candidato, e l'anno accademico. Per tener conto di 
+% possibili variazioni sul tema, i comandi obbligatori hanno varianti 
+% che possono essere usate al loro posto.
+% 
+% Indicheremo con un asterisco~(*) i comandi obbligatori, con una
+% spada~(\textdagger) quelli sostitutivi, cio\`e le varianti di cui si
+% diceva, senza niente quelli facoltativi.
+% 
+% \frontcommand[o]{University}{\1{nome breve}}
+% L'istituzione in cui si discute la thesis, cio\`e quella che rilascia il 
+% titolo di studio; va dato il nome abbreviato:
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\University{Verona}
+\University{Padova}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% Il comando aggiunge da s\'e ``Universit\`a degli Studi di''.
+% 
+% \frontcommand[s]{Istitution}{\1{nome completo}}
+% Quando l'istituzione ha un nome particolare, occorre specificarlo per 
+% intero con questo comando:
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Istitution{Padova}
+\Istitution{Universita' degli studi}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \frontcommand{Logo}{\0{dimen}\1{file}}
+% L'argomento di questo comando \`e il nome (senza estensione) di un
+% documento grafico che contenga il simbolo dell'istituzione.  Ha un
+% argomento opzionale, la dimensione in altezza del logo (normalmente
+% 1.5\,cm):
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Logo[1.5cm]{logo}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \frontcommand{Watermark}{\0{parametri}\1{file}}
+% L'argomento \`e il nome (senza estensione) di un documento che contenga 
+% il simbolo dell'istituzione, con opportuna retinatura in modo che 
+% appaia come in watermark. Ha un argomento opzionale, che permette di 
+% impostare alcuni parametri:
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Watermark[height=10cm,before=1,after=1]{logoretinato}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% Con la chiave \texttt{height} si imposta l'altezza del simbolo, con le
+% chiavi \texttt{before} e \texttt{after} si imposta la proporzione in
+% cui \`e diviso lo spazio rimanente; i valori usuali sono quelli mostrati
+% nell'esempio.
+% 
+% \frontcommand[o]{Faculty}{\1{nome breve}}
+% La facolt\`a in cui si sono svolti gli studi.  Per le thesis di laurea
+% triennale o magistrale, sono le facolt\`a gli enti responsabili
+% dell'esame finale.
+% 
+% \frontcommand[s]{Department}{\1{nome breve}}
+% Per le thesis di dottorato, la responsabilit\`a \`e di un dipartimento.
+% 
+% \frontcommand[s]{Division}{\1{nome completo}}
+% Se la facolt\`a o dipartimento ha un nome non usuale, si pu\`o inserirlo
+% con questo comando:
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Division{Istituto di Cultura Generale}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \frontcommand[s]{Interfaculty}{\1{nomi completi}}
+% Se il corso di laurea \`e diviso fra pi\`u facolt\`a, si usi questo 
+% comando; si noti che, a differenza di \cmdname{Faculty} e 
+% \cmdname{Division}, il risultato non \`e messo automaticamente in 
+% maiuscolo. Quindi si scriva, per esempio,
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+FACOLT\`A DI TUTTOLOGIA\\
+FACOLT\`A DI SCIENZE FUMETTISTICHE
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% Si pu\`o usare la doppia barra rovescia per indicare dove spezzare le 
+% righe.
+% 
+% \frontcommand[o]{Course}{\0{tipo}\1{nome}}
+% Il corso di studi seguito, di cui la thesis \`e il compimento. Ha un 
+% argomento opzionale che, non espresso, equivale a `Laurea Magistrale':
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Course{Pennutistica}
+\Course[Dottorato di Ricerca]{Pennutistica}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \frontcommand[s]{School}{\1{nome completo}}
+% Se il corso di studi ha un nome speciale, si usi questo comando che 
+% produce esattamente il suo argomento:
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\School{Scuola di specializzazione in Volo Planato}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \frontcommand{Titoletto}{\1{tipo}}
+% \`E possibile, con questo comando, specificare il tipo di thesis:
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Titoletto{Tesi di Laurea}
+\Titoletto{Tesi di Laurea Magistrale}
+\Titoletto{Tesi di Dottorato di Ricerca}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \frontcommand[o]{Title}{\1{titolo}}
+% Il titolo della thesis, con eventuali punti dove andare a capo espressi 
+% con \verb|\\|.
+% 
+% \frontcommand{Subtitle}{\1{subtitle}}
+% Un subtitleolo. Accade talvolta che due studenti preparino la loro 
+% thesis in collaborazione e che ciascuno ne presenti una parte: il 
+% subtitleolo \`e per questi casi, o altri che si possano pensare.
+% 
+% \frontcommand[o]{Candidate}{\0{matricola}\1{nome}}
+% Il nome e cognome del candidato.  Notare che, in englisho, il nome va
+% \emph{prima} del cognome, qualsiasi cosa affermino i burocrati.  Il
+% comando prende come argomento opzionale il numero di matricola, che
+% potrebbe essere richiesto dalle regole locali.  \`E possibile ripetere
+% il comando, nel caso ci siano pi\`u candidati che presentano insieme il
+% lavoro.
+% 
+% \frontcommand[o]{Advisor}{\1{nome}}
+% Il nome e cognome (se si preferisce preceduto dall'appellativo 
+% accademico) del relatore. Pu\`o capitare che i relatori siano pi\`u 
+% d'uno: basta specificarli successivamente, si veda l'esempio di prima.
+% Il comando \`e obbligatorio se non si \`e data l'opzione \opt{noadvisor}.
+% 
+% \frontcommand{Coadvisor}{\1{nome}}
+% Il nome e cognome del correlatore, di solito un esterno 
+% all'istituzione che ha collaborato alla guida del lavoro che ha 
+% portato alla thesis. Anche qui se ne pu\`o specificare pi\`u d'uno.
+% 
+% \frontcommand[o]{Academicyear}{\1{anno}}
+% L'anno accademico nel quale si discute la thesis.
+% 
+% \frontcommand[s]{Foot}{\1{testo}}
+% Se al piede non si vuole la scritta ``Academic Year'' ma 
+% qualcos'altro, lo si specifichi nell'argomento a questo comando.
+% 
+% 
+% \section{Modifiche all'aspetto del frontispiece}
+% Alcuni aspetti del frontispiece possono essere variati.  Per esempio,
+% \`e possibile caricare gli stessi caratteri usati nel corpo della thesis o
+% cambiare i margini.
+% 
+% \frontcommand{NCandidate}{\1{nome}}
+% Il nome del candidato \`e preceduto dalla parola ``Candidate''. Se si 
+% preferisce ``Laureando'', si usi
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\NCandidate{Candidate}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \frontcommand{NCandidates}{\1{nome}}
+% Se ci sono pi\`u candidati, i nomi sono preceduti dalla parola
+% ``Candidates''.  Se si preferisce ``Laureandi'', si usi
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\NCandidates{Candidates}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \frontcommand{NAdvisor}{\1{singolare}\1{plurale}}
+% Analogamente, il nome del relatore \`e preceduto da ``Advisor''. Se si 
+% fosse esterofili, si potrebbe modificarlo con
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\NAdvisor{Advisor}{Advisors}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% \`E necessario scrivere sia la forma singolare che quella plurale, anche
+% se ci sar\`a un solo relatore (ma si pu\`o lasciare l'argomento vuoto).
+% 
+% \frontcommand{NCoadvisor}{\1{singolare}\1{plurale}}
+% Stesso discorso fatto per l'appellativo del relatore.
+% 
+% \frontcommand{Punctuation}{\1{carattere}}
+% Gli appellativi ``Candidate'' e ``Advisor'' sono seguiti da due 
+% punti; se non lo si desidera, si scriva
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Punctuation{}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \frontcommand{Preamble}{\1{comandi}}
+% Supponiamo che la thesis sia stata scritta con il carattere Utopia, 
+% fornito dal pacchetto \pack{fourier}. Occorre specificarlo anche per 
+% il frontispiece con
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Preamble{\usepackage{fourier}}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% Nessuno dei pacchetti caricati dal documento principale passa
+% automaticamente al frontispiece: ripetendo questo comando, che ha
+% effetto cumulativo, si possono risolvere altri problemi particolari.
+% Infatti l'argomento del comando viene trascritto cos\`i com'\`e nel
+% preambolo del documento~\file{frn}.\footnote{In una versione
+% precedente il comando era chiamato \cmdname{Package}; questo \`e ancora
+% definito come equivalente di \cmdname{Preamble}, ma il suo uso \`e
+% deprecato.} Vedremo in seguito altri usi del comando; si consiglia di
+% usarne uno per ciascuna riga da aggiungere al preambolo: l'effetto \`e 
+% cumulativo.
+% 
+% \frontcommand{Return}{\1{dimen}}
+% Il nome del candidato e quello del relatore sono a filo dei margini 
+% sinistro e destro (che si possono ricavare dalle dimensioni dei due 
+% filetti). Se si desidera averli pi\`u rientrati si pu\`o usare questo 
+% comando:
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Return{1cm}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \frontcommand{Margins}{\1{dimen}\1{dimen}\1{dimen}\1{dimen}}
+% Se i margini scelti dal pacchetto non sono di gradimento, si possono 
+% specificarne di diversi con questo comando:
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Margins{1cm}{1.5cm}{1cm}{1cm}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% \`e l'equivalente della scelta del pacchetto.  Le dimensioni si
+% riferiscono, nell'ordine, al margine sinistro, in basso, destro e in
+% alto.\footnote{In versioni precedenti, questo comando e il
+% precedente si chiamavano, rispettivamente, \cmdname{Margins} e
+% \cmdname{MoreMargin}.}
+% 
+% 
+% \section{Scelta dei caratteri: forma e misura}
+% 
+% Se non si fosse soddisfatti della scelta dei caratteri proposta
+% dall'autore, si pu\`o usare il comando \cmdname{Preamble} per
+% modificarla.  I comandi disponibili compaiono nella
+% tabella~\ref{fonts}, con il loro valore usuale e la posizione in cui
+% vengono usati.  Per esempio, per avere il titolo in maiuscoletto~16/20
+% (cio\`e corpo~16 con distanza fra le linee di base di 20 punti), si
+% scriver\`a
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Preamble{\renewcommand{\fronttitlefont}{%
+    \fontsize{16}{20}\scshape}}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% La sintassi non \`e comoda, per scelta precisa.  Si ricordi che con
+% l'opzione \texttt{sans} non \`e disponibile il maiuscoletto.  Un'altra
+% cosa da ricordare \`e che per scegliere un carattere, occorre
+% specificare non solo le sue dimensioni (e questo va fatto per prima
+% cosa), ma anche le sue altre caratteristiche.  Il comando
+% \cmdname{fontsize} prende due argomenti: il corpo e l'avanzamento di
+% riga; se non si specifica l'unit\`a di misura, viene assunta quella di
+% punti tipografici~(pt).  Se si cambia uno dei caratteri predefiniti,
+% occorre specificare ogni aspetto del nuovo, se non si vogliono avere
+% sorprese.
+% 
+% \begin{table}[ht]
+% \centering
+% \caption{Comandi per la scelta dei caratteri}\label{fonts}
+% \medskip\footnothesisze
+% \begin{tabular}{lll}
+% \toprule
+% Comando & Valore usuale & Impiego\\
+% \midrule
+% \cmdname{frontinstitutionfont} &
+% Neretto, 14/17 &
+% Nome dell'universit\`a o istituzione\\[3pt]
+% \cmdname{frontdivisionfont} &
+% Tondo, 12/16 &
+% Nome della facolt\`a o divisione\\[3pt]
+% \cmdname{frontpretitlefont} &
+% Maiuscoletto, 10/12 &
+% Per il titoletto\\[3pt]
+% \cmdname{fronttitlefont} &
+% Neretto, 17/21 &
+% Per il titolo della thesis\\[3pt]
+% \cmdname{frontsubtitlefont} &
+% Tondo, 12/14 &
+% Per il subtitleolo\\[3pt]
+% \cmdname{frontnamesfont} &
+% Neretto, 12/14 &
+% Per i nomi di candidato e relatore\\[3pt]
+% \cmdname{frontfixednamesfont} &
+% Tondo, 12/14 &
+% Per scrivere le parole chiave\\
+% && `Candidate', `Advisor' e `Coadvisor'\\[3pt]
+% \cmdname{frontsmallfont} &
+% Tondo, 9/11 &
+% Per il numero di matricola\\[3pt]
+% \cmdname{frontfootfont} &
+% Neretto, 12/14 &
+% Per scrivere l'anno accademico\\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+% 
+% 
+% \section{Parametri di spaziatura}
+% 
+% \`E possibile cambiare la spaziatura fra il campo `relatori' e quello
+% `correlatori' (il valore normale \`e 1\unit{ex}):
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Preamble{\renewcommand{\frontrelcorrelsep}{2ex}}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% Analogamente si pu\`o aggiustare la composizione nel caso si usi
+% l'opzione \opt{signatures} modificando il comando
+% \cmdname{frontadjustforsignatures} per esempio con
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Preamble{\renewcommand{\frontadjustforsignatures}{1cm}}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% Si definisce cos\`i una spaziatura verticale aggiuntiva fra la zona
+% ``candidato-relatori'', in modo che non si arrivi troppo vicino al
+% filetto in basso.  Il comando non ha effetto se non dando l'opzione
+% \opt{signatures}.
+% 
+% Un terzo parametro dimensionale \`e \cmdname{frontlogosep}, il cui
+% valore normale \`e 6\unit{pt}; se il logo dovesse essere troppo vicino o
+% lontano dal nome dell'universit\`a, si pu\`o modificare con un comando
+% come
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Preamble{\renewcommand{\frontadjustforsignatures}{4pt}}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% dove la dimensione pu\`o anche essere negativa.
+% 
+% Nel caso di pi\`u candidati, la spaziatura fra i nomi \`e regolata
+% dal parametro \cmdname{frontcandidatesep}, il cui valore usuale \`e
+% 3\unit{ex}; la si pu\`o modificare con un comando come
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Preamble{\renewcommand{\frontcandidatesep}{1cm}}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% 
+% \section{\Xe\LaTeX}
+% 
+% \`E possibile usare \Xe\TeX{}, ovviamente nella forma \Xe\LaTeX, per 
+% produrre il frontispiece. Ovviamente dovr\`a essere usato il comando 
+% \cmdname{Preamble} per impostare anche il documento~\file{frn} per 
+% l'uso di questo motore \TeX. Per esempio, se il documento principale 
+% \`e composto in ``Adobe Caslon~Pro'', si dovr\`a scrivere
+% \iffalse
+%<*verb>
+% \fi
+\begin{verbatim}
+\Preamble{\usepackage{fontspec}}
+\Preamble{\setmainfont{Adobe Caslon Pro}}
+\end{verbatim}
+% \iffalse
+%</verb>
+% \fi
+% Naturalmente \`e possibile compilare il \file{frn} anche usando
+% \textsc{pdf}\LaTeX{} oppure \LaTeX{} e \textsc{dvips}.  Tuttavia si
+% consiglia l'uniformit\`a fra il carattere usato nel testo e quello usato
+% nel frontispiece, se non ci sono disposizioni particolari che
+% richiedano diversamente.
+% 
+% Si ricordi che \Xe\TeX{} legge correttamente solo documenti scritti 
+% nelle codifiche \textsc{utf}-8 oppure \textsc{utf}-16.
+% 
+% 
+% \section{Limitazioni e incompatibilit\`a}
+% 
+% Il pacchetto \`e in versione preliminare, \`e possibile che in futuro
+% cambi anche la sintassi dei comandi da usare.  Si spera in maniera
+% compatibile.
+% 
+% Gli altri pacchetti caricati sono \pack{ifpdf}, \pack{graphicx} e
+% \pack{afterpage} che non hanno gravi incompatibilit\`a note.  Se
+% disponibile sul sistema, viene caricato anche \pack{ifxetex}.  Se si
+% dovesse usare \pack{graphicx} con un \emph{driver} diverso da
+% \texttt{dvips} o \texttt{pdftex}, va caricato \emph{prima} di
+% \pack{frontispiece}; ricordiamo che i due \emph{driver} menzionati non
+% vanno dichiarati come opzione a \pack{graphicx}, perch\'e in mancanza di
+% altre opzioni vengono scelti automaticamente dal compilatore.
+% Attenzione: usando \emph{Textures}, per esempio, va inserita anche
+% l'opzione \opt{driver=textures} a \pack{frontispiece}.  Cambiare il
+% nome del driver, se necessario; la sintassi \`e questa, niente spazi
+% attorno al segno di uguaglianza.  Ovviamente si dovr\`a consultare il
+% manuale della propria distribuzione per sapere come produrre il file
+% eps in modo corretto.
+% 
+% 
+% \section{Soluzione del giochino}
+% 
+% L'etimologia di `Stanford' \`e `stan$+$ford'; l'antico inglese `stan' \`e
+% ora `stone', cio\`e `pietra', mentre il toponimo `ford' indica un luogo
+% di mercato.  Il cognome `Knuth' \`e di origine norvegese, affine a
+% `Knudsen', e significa `nodo'.  Il nome `Donald' \`e di origine gaelica
+% e vuol dire `reggitore del mondo', mentre `Basilio' viene dalla parola
+% greca che significa~`re'.  Il signor Revinu Jitis Drofnats non ha
+% bisogno di presentazioni nel mondo~\TeX.
+% 
+% 
+% \section{Esempi}
+% 
+% Nelle pagine seguenti vedremo alcuni esempi con il sorgente.  I titoli
+% delle thesis sono veri, manca solo l'indicazione dell'anno accademico,
+% per evidenti motivi di \emph{privacy}.  Non sono stati messi `logo' di
+% universit\`a per evitare problemi legali.
+% 
+% \clearpage
+% 
+% \iffalse
+%<*examplea>
+% \fi
+% \begin{verbatim}
+\documentclass[a4paper,titlepage]{book}
+\usepackage{frontispiece}
+
+\begin{document}
+\begin{frontispiece}
+\University{Padova}
+\Faculty{Scienze Matematiche, Fisiche e Naturali}
+\Course[Laurea]{Informatica}
+\Titoletto{Tesi di laurea}
+\Title{TODO}
+\Candidate[565886]{Piero Dalle Pezze}
+\Advisor{Ch.mo Prof.~Silvio C. E. Tosatto}
+\Academicyear{20??-20??}
+\end{frontispiece}
+\end{document}
+% \end{verbatim}
+% \iffalse
+%</examplea>
+% \fi
+% 
+% \vspace{4ex}
+% 
+% \includeex{examplea-frn}
+% 
+% \clearpage
+% 
+% \iffalse
+%<*exampleb>
+% \fi
+% \begin{verbatim}
+\documentclass[a4paper,titlepage]{book}
+\usepackage[sans]{frontispiece}
+
+\begin{document}
+\begin{frontispiece}
+\University{Padova}
+\Faculty{Scienze Matematiche, Fisiche e Naturali}
+\Course[Laurea]{Informatica}
+\Titoletto{Tesi di laurea}
+\Title{TODO}
+\Candidate{Piero Dalle Pezze}
+\Advisor{Ch.mo Prof.~Silvio C. E. Tosatto}
+\Academicyear{20??-20??}
+\Return{1.5cm}
+\NCandidate{Laureando}
+\Punctuation{}
+\end{frontispiece}
+\end{document}
+% \end{verbatim}
+% \iffalse
+%</exampleb>
+% \fi
+% 
+% \vspace{4ex}
+% 
+% \includeex{exampleb-frn}
+% 
+% \clearpage
+% 
+% \iffalse
+%<*examplec>
+% \fi
+% \begin{verbatim}
+\documentclass[a4paper,titlepage]{book}
+\usepackage{frontispiece}
+
+\begin{document}
+\begin{frontispiece}
+\Package{\usepackage{fourier}}
+\University{Bologna}
+\Department{Informatica}
+\Course[Dottorato di Ricerca]{Informatica}
+\Title{TODO}
+\Candidate{Piero Dalle Pezze}
+\Advisor{Ch.mo Prof.~Silvio C. E. Tosatto}
+\NAdvisor{Coordinatore}{}
+\Coadvisor{Ch.mo Prof.~TODO}
+\NCoadvisor{Supervisore della ricerca}{}
+\Academicyear{20??-20??}
+\end{frontispiece}
+\end{document}
+% \end{verbatim}
+% \iffalse
+%</examplec>
+% \fi
+% 
+% \vspace{4ex}
+% 
+% \includeex{examplec-frn}
+% \newpage
+% 
+% \section{A shell script to compile the documentation}
+% Running \texttt{latex} on \file{frontispiece.ins} produces also 
+% \file{makedoc.sh} which can be run, on Unix systems, by one of the 
+% following command from a shell:
+% \begin{flushleft}\ttfamily
+% sh makedoc.sh
+% \end{flushleft}
+% The shell script code is as follows.
+% 
+% \iffalse
+%<*thedoc>
+% \fi
+% \begin{verbatim}
+#!/bin/sh
+pdflatex examplea.tex
+pdflatex examplea-frn.tex
+pdflatex exampleb.tex
+pdflatex exampleb-frn.tex
+pdflatex examplec.tex
+pdflatex examplec-frn.tex
+pdflatex frontispiece.dtx
+pdflatex frontispiece-frn.tex
+makeindex -s gind frontispiece
+makeindex -s gglo -o frontispiece.gls frontispiece.glo
+pdflatex frontispiece.dtx
+pdflatex frontispiece.dtx
+exit
+% \end{verbatim}
+% \iffalse
+%</thedoc>
+% \fi
+%
+% \StopEventually{\PrintChanges\PrintIndex}
+%
+% \selectlanguage{english}
+% \section{The implementation}
+% After the usual stuff of package presentation, here are the actual
+% macros.  We use the $\varepsilon$-\TeX{} extensions, so we check
+% that they are present.
+% \iffalse
+%<*package>
+% \fi
+%    \begin{macrocode}
+\def\@not@eTeX{%
+  \PackageError{frontispiece}
+  {This package requires e-TeX, I'll stop right now}
+  {This package is built on the e-TeX extensions which are not present.%
+   \MessageBreak
+   The best thing you can do is to upgrade your TeX system or try%
+   \MessageBreak
+   using `elatex' or `pdfelatex'.}%
+    \expandafter\@@end}
+\ifx\eTeXversion\@undefined
+  \@not@eTeX
+\else
+  \let\@not@eTeX\@undefined
+\fi
+%    \end{macrocode}
+% \subsection{Package options}
+% Now we declare options and a conditional which is true when we write
+% to the \file{frn} file: this is the file which will be compiled
+% later in order to produce the pdf page that will be included as the
+% frontispiece.  The option `infront' is a private one, which is set
+% only in the \file{frn} file where the nowrite option is set, so we
+% need a correction.  It's easier to use \verb|\ifdefined| than to
+% define many new conditionals. Actually, the package doesn't use 
+% $\varepsilon$-\TeX{} features other than \verb|\ifdefined| and
+% \verb|\unless|, but I wanted to try and encourage to upgrade from 
+% old \TeX{} systems.
+% 
+% \begin{macro}{\iffront@write}
+% The conditional \verb|\iffront@write| is false when we don't want 
+% to write the \file{frn} file.
+% \end{macro}
+% \begin{macro}{\front@infront}
+% \verb|\front@infront| is defined only if we are typesetting the
+% \file{frn} file.
+% \end{macro}
+% \begin{macro}{\front@signatures}
+% \verb|\front@signatures| is defined if we need to leave space for 
+% the advisor's signature.
+% \end{macro}
+% \begin{macro}{\front@noadvisor}
+% \verb|\front@noadvisor| is defined if we don't want an advisor's 
+% name.
+% \end{macro}
+% \begin{macro}{\front@thefont}
+% \begin{macro}{\fontoptionnormal}
+% \begin{macro}{\fontoptionsans}
+% The options `normal' and `sans' are an elementary way to control 
+% the font choice for the frontispiece.
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\front@norules}
+% \verb|\front@norules| is defined if we don't want rules in the 
+% frontispiece.
+% \end{macro}
+% \begin{macro}{\iffront@include}
+% \verb|\iffront@include| controls whether we use the package only in 
+% order to include an external file (similarly to pdfpages).
+% \end{macro}
+% \begin{macro}{\front@grfdriver}
+% In \verb|\front@grfdriver| we load the driver's choice; it's a very 
+% primitive trick, but not many people use strange drivers, nowadays.
+% \end{macro}
+%    \begin{macrocode}
+\newif\iffront@write
+\DeclareOption{write}{\front@writetrue}
+\DeclareOption{nowrite}{\front@writefalse}
+\DeclareOption{infront}{\let\front@infront=T}
+\DeclareOption{signatures}{\let\front@signatures=T}
+\DeclareOption{noadvisor}{\let\front@noadvisor=T}
+\DeclareOption{normal}{\def\front@thefont{\fontoptionnormal}}
+\DeclareOption{sans}{\def\front@thefont{\fontoptionsans}}
+\DeclareOption{norules}{\let\front@norules=T}
+\newif\iffront@include
+\DeclareOption{onlyinclude}{\front@includetrue\ExecuteOptions{nowrite}}
+\DeclareOption*{\edef\front@grfdriver{\CurrentOption}}
+%    \end{macrocode}
+% Now we choose the default options; we want to write the \file{frn} file
+% and roman fonts.
+%    \begin{macrocode}
+\ExecuteOptions{write,normal}
+\ProcessOptions\relax
+%    \end{macrocode}
+% \subsection{Required packages and service macros}
+% We load the needed packages.  Of course \pack{graphicx} and
+% \pack{eso-pic} for graphic inclusion; we need also \pack{afterpage} 
+% for adjustments when using some classes.
+%    \begin{macrocode}
+\RequirePackage{afterpage}
+\RequirePackage{graphicx}
+\RequirePackage{eso-pic}
+%    \end{macrocode}
+% \begin{macro}{\includefront}
+% We manage first the onlyinclude option.  If we are only including an
+% external file, we load it and prepare for an empty verso page; the
+% optional argument is there in order to correct the page number, if
+% necessary; after that we stop reading the package.
+%    \begin{macrocode}
+\iffront@include
+\newcommand{\includefront}[2][0]{%
+  \titlepage\null
+    \AddToShipoutPicture*{\includegraphics{#2}}%
+    \afterpage{\thispagestyle{empty}}%
+  \endtitlepage
+  \ifx0#1\else
+    \null\thispagestyle{empty}\newpage\addtocounter{page}{-#1}%
+  \fi}
+  \newenvironment{frontispiece}{%
+    \PackageError{frontispiece}
+    {Using the `frontispiece' environment along with the%
+     \MessageBreak
+     `onlyinclude' option is not allowed}
+    {You have called `frontispiece' with the `onlyinclude' option%
+     \MessageBreak
+     which disallows the `frontispiece' environment, thus be%
+     \MessageBreak
+     prepared for a long string of errors.%
+     \MessageBreak
+     The best is to hit `x' now and correct your input.}%
+     }{}
+\expandafter\endinput
+\else
+%    \end{macrocode}
+% \end{macro}
+% If the `onlyinclude' option is not given we can be in different 
+% situations: first of all we load support for distinguishing whether 
+% the user is typesetting with \texttt{latex}, \texttt{pdflatex} or 
+% \texttt{xelatex}.
+%    \begin{macrocode}
+\RequirePackage{ifpdf}
+%    \end{macrocode}
+% We want to support also \Xe\LaTeX{}, but not all distributions have
+% it; so if the package \pack{ifxetex} is not in the system we assume
+% that \Xe\LaTeX{} is not used; we have to bury a \verb|\let| inside a
+% macro, which can be safely undefined later; all \verb|\ifxetex|
+% conditionals will be treated as false, of course.
+%    \begin{macrocode}
+\def\front@ifxetex{\let\ifxetex\iffalse}
+\IfFileExists{ifxetex.sty}{\RequirePackage{ifxetex}}{\front@ifxetex}
+\let\front@ifxetex\@undefined
+\fi
+%    \end{macrocode}
+% \begin{macro}{\front@write}
+% \begin{macro}{\front@expwrite}
+% If we are writing the \file{frn} file, we allocate an output stream,
+% otherwise we let \verb|\front@write| and \verb|\front@expwrite| to
+% gobble their argument; \verb|\front@write| is used to write things
+% without expansion while \verb|\front@expwrite| expands tokens in the
+% argument.
+% \end{macro}
+% \end{macro}
+%    \begin{macrocode}
+\iffront@write
+  \newwrite\front@out
+  \immediate\openout\front@out=\jobname-frn.tex
+  \long\def\front@write#1{\immediate\write\front@out{\unexpanded{#1}}}
+  \long\def\front@expwrite{\immediate\write\front@out}
+\else
+  \long\def\front@write#1{}
+  \let\front@expwrite\front@write
+\fi
+%    \end{macrocode}
+% \subsection{Initialization of the \file{frn} file}
+% Now we initialize the \file{frn} file by setting the class and the
+% margins.  If a driver option has been given we want to load
+% \pack{graphicx} in the frn file with the right driver; we have to do
+% this before loading the present package, which always requires
+% \pack{graphicx}.
+%    \begin{macrocode}
+\front@write{\documentclass[titlepage]{article}}
+\front@write{\usepackage[a4paper,%
+  left=1cm,bottom=1.5cm,right=1cm,top=1cm]{geometry}}
+\ifdefined\front@grfdriver
+  \def\front@temp driver=#1\@nil{\def\front@grfdriver{#1}}
+  \expandafter\front@temp\front@grfdriver\@nil
+  \front@expwrite{\string\usepackage[\front@grfdriver]{graphicx}}
+\fi
+%    \end{macrocode}
+% Set the options in the \file{frn} file: there we don't want to be
+% writing the \file{frn} file, of course, nor we need aux files, but
+% we add the private option.
+%    \begin{macrocode}
+\def\front@theoptions{nowrite,infront}
+\ifdefined\front@signatures
+  \g@addto@macro\front@theoptions{,signatures}
+\fi
+\ifdefined\front@noadvisor
+  \g@addto@macro\front@theoptions{,noadvisor}
+\fi
+\ifdefined\front@norules
+  \g@addto@macro\front@theoptions{,norules}
+\fi
+\front@expwrite{\string\usepackage[\front@theoptions]{frontispiece}}
+\front@write{\nofiles}
+%    \end{macrocode}
+% Write in the \file{frn} file the font choosing command; here we need only 
+% a one level expansion.
+%    \begin{macrocode}
+\expandafter\front@write\expandafter{\front@thefont}
+%    \end{macrocode}
+% \subsection{Commands, conditionals and registers}
+% The following commands are necessary only when we are compiling 
+% the frontispiece, when the \verb|\front@infront| command is defined.
+%    \begin{macrocode}
+\ifdefined\front@infront
+\def\fontoptionnormal{%
+  \let\front@font\normalfont \let\front@scfont\scshape}
+\def\fontoptionsans{%
+  \let\front@font\sffamily \let\front@scfont\upshape}
+\def\front@push{}
+\def\front@thecandidate{Candidate}
+\def\front@thecandidates{Candidates}
+\def\front@theadvisor{Advisor}
+\def\front@theadvisors{Advisors}
+\def\front@thecoadvisor{Coadvisor}
+\def\front@thecoadvisors{Coadvisors}
+\def\front@punct{:}
+\newif\iffront@titoletto
+\newif\iffront@matr
+\newif\iffront@onecand
+\newif\iffront@morecand
+\newif\iffront@correl
+\newif\iffront@logo
+\newif\iffront@inst
+\newif\iffront@subtitle
+\newif\iffront@multiple
+\newif\iffront@division
+\newif\iffront@school
+\newif\iffront@foot
+\newtoks\front@candtoks
+\newcount\front@candcount
+\newtoks\front@reltoks
+\newcount\front@relcount
+\newtoks\front@correltoks
+\newcount\front@correlcount
+\fi
+%    \end{macrocode}
+% We need a macro to hide the conditionals, which we load and define
+% only when making the front page; the \verb|\if| conditional will
+% always expand to nothing or be skipped altogether up to the matching
+% \verb|\fi| when writing the \file{frn} file; if expanded, however,
+% it will put in the correct conditional when making the front page
+% (the trick is due to S. von Bechtolsheim.
+%    \begin{macrocode}
+\def\@front@#1{TT\fi\@nameuse{iffront@#1}}
+%    \end{macrocode}
+% Now we define the markup commands. We do this three times, because 
+% they will behave differently in different conditions.
+%    \begin{macrocode}
+\iffront@write
+%    \end{macrocode}
+% If we are writing the \file{frn} file, then we simply copy the
+% commands to it.  An exception is \verb|\Preamble|: in this case we
+% copy only its argument.  Since there can be several candidate names,
+% the \verb|\Candidate| macro is treated differently, because it can
+% have an optional argument.
+%    \begin{macrocode}
+\newcommand{\Preamble}[1]{\front@write{#1}}
+\newcommand{\Return}[1]{\front@write{\Return{#1}}}
+\newcommand{\Margins}[4]{\front@write{\Margins{#1}{#2}{#3}{#4}}}
+\newcommand{\Logo}[2][1.5cm]{\front@write{\Logo[#1]{#2}}}
+\newcommand{\Watermark}[2][height=10cm]{%
+  \front@write{\Watermark[#1]{#2}}}
+\newcommand{\University}[1]{\front@write{\University{#1}}}
+\newcommand{\Istitution}[1]{\front@write{\Istitution{#1}}}
+\newcommand{\Faculty}[1]{\front@write{\Faculty{#1}}}
+\newcommand{\Department}[1]{\front@write{\Department{#1}}}
+\newcommand{\Division}[1]{\front@write{\Division{#1}}}
+\newcommand{\Interfaculty}[1]{\front@write{\Interfaculty{#1}}}
+\newcommand{\Course}[2][Laurea Magistrale]{\front@write{\Course[#1]{#2}}}
+\newcommand{\School}[1]{\front@write{\School{#1}}}
+\newcommand{\Title}[1]{\front@write{\Title{#1}}}
+\newcommand{\Subtitle}[1]{\front@write{\Subtitle{#1}}}
+\newcommand{\Academicyear}[1]{\front@write{\Academicyear{#1}}}
+\newcommand{\Foot}[1]{\front@write{\Foot{#1}}}
+\newcommand{\Titoletto}[1]{\front@write{\Titoletto{#1}}}
+\newcommand{\Candidate}[2][]{%
+  \def\next{#1}%
+  \ifx\next\@empty
+    \front@write{\Candidate{#2}}%
+  \else
+    \front@write{\Candidate[#1]{#2}}%
+  \fi}
+\newcommand{\Advisor}[1]{\front@write{\Advisor{#1}}}
+\newcommand{\Coadvisor}[1]{\front@write{\Coadvisor{#1}}}
+\newcommand{\NCandidate}[1]{\front@write{\NCandidate{#1}}}
+\newcommand{\NCandidates}[1]{\front@write{\NCandidates{#1}}}
+\newcommand{\NAdvisor}[2]{\front@write{\NAdvisor{#1}{#2}}}
+\newcommand{\NCoadvisor}[2]{\front@write{\NCoadvisor{#1}{#2}}}
+\newcommand{\Punctuation}[1]{\front@write{\Punctuation{#1}}}
+%    \end{macrocode}
+% Now some equivalent commands for backwards compatibility with the
+% preproduction version called front-th. Unfortunately, the old 
+% command \verb|\Matricola| cannot be made compatible.
+%    \begin{macrocode}
+\def\front@oldcommand#1#2{\def#1{\PackageWarning{frontispiece}
+  {Old command \string#1 found; use \string#2}#2}}
+\front@oldcommand\IlCandidate\Candidate
+\front@oldcommand\Package\Preamble
+\front@oldcommand\MoreMargin\Return
+\front@oldcommand\Margins\Margins
+% Sorry, \Matricola cannot be used any more
+\def\Matricola#1{\PackageError{frontispiece}
+  {Old command \noexpand\Matricola found}
+  {The command \noexpand\Matricola cannot be used with this package.%
+   \MessageBreak Use the optional argument to \string\Candidate}}
+%
+\else\ifdefined\front@infront
+%    \end{macrocode}
+% If we are typesetting the front page, then we give the commands 
+% their real meaning, i.e., we define macros which will be used in 
+% \verb|\preparefrontpage|.
+%    \begin{macrocode}
+\newcommand{\Return}[1]{\def\front@push{\hspace{#1}}}
+\newcommand{\Margins}[4]{\geometry{left=#1,bottom=#2,right=#3,top=#4}}
+\newcommand{\Logo}[2][1.5cm]{\def\front@logo{#2}%
+  \def\front@logosize{#1}\front@logotrue}
+%    \end{macrocode}
+% We support a centered logo in the background, using xkeyval.
+%    \begin{macrocode}
+\def\front@logobefore{1}\def\front@logoafter{1} % default values
+\define@key{watermark}{height}[10cm]{\def\front@logoheight{#1}}
+\define@key{watermark}{before}[1]{\def\front@logobefore{#1}}
+\define@key{watermark}{after}[1]{\def\front@logoafter{#1}}
+\newcommand{\Watermark}[2][height=10cm]{%
+  \setkeys{watermark}{#1}%
+  \AddToShipoutPicture*{%
+    \put(0,0){
+      \parbox[b][\paperheight]{\paperwidth}{
+      \vspace*{\stretch{\front@logobefore}}
+      \centering
+      \includegraphics[height=\front@logoheight]{#2}
+      \vspace{\stretch{\front@logoafter}}
+}}}}
+%    \end{macrocode}
+% Now we continue the definition of the markup commands, mostly 
+% passing their arguments to the internal macros; in some cases we 
+% need more work, using token lists.
+%    \begin{macrocode}
+\newcommand{\University}[1]{\def\front@univ{#1}}
+\newcommand{\Istitution}[1]{\def\front@instit{#1}\front@insttrue}
+\newcommand{\Faculty}[1]{\def\front@facoldip{#1}%
+  \def\front@thefacoldip{FACOLT\`A}}
+\newcommand{\Department}[1]{\def\front@facoldip{#1}%
+  \def\front@thefacoldip{DIPARTIMENTO}}
+\newcommand{\Interfaculty}[1]{%
+  \def\front@multiple{#1}\front@multipletrue}
+\newcommand{\Division}[1]{\def\front@division{#1}\front@divisiontrue}
+\newcommand{\Course}[2][Laurea Magistrale]{%
+  \def\front@cl{#1\unskip\space IN #2}}
+\newcommand{\School}[1]{\def\front@school{#1}\front@schooltrue}
+\newcommand{\Title}[1]{\def\front@title{#1}}
+\newcommand{\Subtitle}[1]{\def\front@subtitle{#1}\front@subtitletrue}
+\newcommand{\Academicyear}[1]{\def\front@anno{#1}}
+\newcommand{\Foot}[1]{\def\front@foot{#1}\front@foottrue}
+\newcommand{\Titoletto}[1]{\def\front@titoletto{#1}\front@titolettotrue}
+\newcommand{\Candidate}[2][]{\advance\front@candcount\@ne
+  \front@candtoks=\expandafter{\the\front@candtoks
+    \front@docand{#1}{#2}}%
+  \def\front@cand{#2}%
+  \def\next{#1}%
+  \ifx\next\@empty\else\def\front@matr{#1}\front@matrtrue\fi
+}
+\newcommand{\Advisor}[1]{\advance\front@relcount\@ne 
+  \front@reltoks=\expandafter{\the\front@reltoks\\#1%
+   \ifdefined\front@signatures\\[1cm]\fi}}
+\newcommand{\Coadvisor}[1]{%
+  \front@correltrue\advance\front@correlcount\@ne
+  \front@correltoks=\expandafter{\the\front@correltoks\\#1}}
+\newcommand{\NCandidate}[1]{\def\front@thecandidate{#1}}
+\newcommand{\NCandidates}[1]{\def\front@thecandidates{#1}}
+\newcommand{\NAdvisor}[2]{\def\front@theadvisor{#1}%
+  \def\front@theadvisors{#2}}
+\newcommand{\NCoadvisor}[2]{\def\front@thecoadvisor{#1}%
+  \def\front@thecoadvisors{#2}}
+\newcommand{\Punctuation}[1]{\def\front@punct{#1}}
+%    \end{macrocode}
+% Now we set the default fonts for the various parts of the 
+% frontispiece.
+% \begin{macro}{\frontinstitutionfont}
+% \begin{macro}{\frontdivisionfont}
+% \begin{macro}{\frontpretitlefont}
+% \begin{macro}{\fronttitlefont}
+% \begin{macro}{\frontsubtitlefont}
+% \begin{macro}{\frontnamesfont}
+% \begin{macro}{\frontsmallfont}
+% \begin{macro}{\frontfootfont}
+% \begin{macro}{\frontfixednamesfont}
+%    \begin{macrocode}
+\def\frontinstitutionfont{\fontsize{14}{17}\bfseries}
+\def\frontdivisionfont{\fontsize{12}{16}\selectfont}
+\def\frontpretitlefont{\fontsize{10}{12}\front@scfont}
+\def\fronttitlefont{\fontsize{17}{21}\bfseries\itshape}
+\def\frontsubtitlefont{\fontsize{12}{14}\bfseries\itshape}
+\def\frontnamesfont{\fontsize{12}{14}\bfseries}
+\def\frontsmallfont{\fontsize{9}{11}\selectfont}
+\def\frontfootfont{\fontsize{12}{14}\bfseries}
+\def\frontfixednamesfont{\normalfont\normalsize\front@font}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\frontcandidatesep}
+% \begin{macro}{\frontrelcorrelsep}
+% \begin{macro}{\frontlogosep}
+% \begin{macro}{\frontadjustforsignatures}
+% Some pseudo-parameters: the first is to separate candidates' names;
+% the second to separate `Advisor' and `Coadvisor' fields; the
+% third to separate the logo from the University name; the fourth to
+% adjust the `candidate-advisor' field in case there are many advisors
+% and coadvisors and the "signature" option is in force.
+%    \begin{macrocode}
+\def\frontcandidatesep{3ex}
+\def\frontrelcorrelsep{1ex}
+\def\frontlogosep{6pt}
+\def\frontadjustforsignatures{0pt}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% The command to typeset more than one candidate.
+%    \begin{macrocode}
+\def\front@docand#1#2{%
+  #2\\% the candidate's name
+  \def\next{#1}%
+  \unless\ifx\next\@empty
+    \frontsmallfont Matricola #1\\[\frontcandidatesep]
+  \fi}
+%    \end{macrocode}
+% 
+% \subsection{The typesetting}
+% \begin{macro}{\preparefrontpage}
+% Here is where the typesetting is defined.
+%    \begin{macrocode}
+\def\preparefrontpage{%
+\titlepage\front@font
+\centering
+\par
+%    \end{macrocode}
+% \end{macro}
+% First block: the institution's logo.
+%    \begin{macrocode}
+\if\@front@{logo}
+\includegraphics[height=\front@logosize]{\front@logo}\par
+\vspace{\frontlogosep}
+\fi
+\par
+%    \end{macrocode}
+% Second block: the institution's name.
+%    \begin{macrocode}
+{\frontinstitutionfont
+\if\@front@{inst}
+  \front@instit
+\else
+  UNIVERSIT\`A DEGLI STUDI DI \front@univ
+\fi\par}
+\vspace{1.5ex}
+\unless\ifdefined\front@norules\hrule\fi
+\vspace{1.5ex}
+%    \end{macrocode}
+% Third block: the department's name; in Italy graduation theses are
+% responsibility of Faculties, only Ph.D. theses are responsibility of
+% Departments.
+%    \begin{macrocode}
+{\frontdivisionfont
+\if\@front@{multiple}
+  \front@multiple
+\else
+  \if\@front@{division}
+    \MakeUppercase{\front@division}
+  \else
+    \MakeUppercase{\front@thefacoldip}
+    DI
+    \MakeUppercase{\front@facoldip}
+  \fi
+\fi\\
+\if\@front@{school}
+  \front@school
+\else
+  CORSO DI \front@cl
+\fi
+\par}
+%    \end{macrocode}
+% Fourth block: the specification of the thesis' kind.
+%    \begin{macrocode}
+\if\@front@{titoletto}
+\vspace{2cm}
+{\frontpretitlefont\front@titoletto\par}
+\fi
+\vspace{\fill}
+%    \end{macrocode}
+% Fifth block: the thesis' title.
+%    \begin{macrocode}
+{\fronttitlefont\front@title\par}
+%    \end{macrocode}
+% Sixth block: the thesis' subtitle, if present.
+%    \begin{macrocode}
+\if\@front@{subtitle}
+\vspace{4ex}
+{\frontsubtitlefont\front@subtitle\par}
+\fi
+\vspace{\fill}
+%    \end{macrocode}
+
+% Seventh block: the candidate's name and the advisor's name.  A
+% \texttt{tabular*} spanning all the text width has two columns; on
+% the left we put the candidate's name, on the right the advisor's
+% name (possibly more than one) and, if present, the coadvisor's name.
+%    \begin{macrocode}
+\vbox to .3\textheight{\parindent\z@
+\frontnamesfont
+\begin{tabular*}{\textwidth}
+  {@{\front@push}l@{\extracolsep{\fill}}l@{\front@push}}
+
+
+\unless\ifdefined\front@noadvisor
+  \begin{tabular}[t]{@{}l@{}}
+  \relax
+  \ifcase\front@relcount
+    \PackageWarningNoLine{frontispiece}{Missing advisor name}%
+  \or
+    \frontfixednamesfont\front@theadvisor\front@punct
+  \else
+    \frontfixednamesfont\front@theadvisors\front@punct
+  \fi
+  \the\front@reltoks
+  \if\@front@{correl}
+    \\[\frontrelcorrelsep]
+    \ifcase\front@correlcount\or
+      \frontfixednamesfont\front@thecoadvisor\front@punct
+    \else
+      \frontfixednamesfont\front@thecoadvisors\front@punct
+    \fi
+  \the\front@correltoks
+  \fi
+  \end{tabular}
+&
+\begin{tabular}[t]{@{}l@{}}
+\relax\ifnum\front@candcount<1
+  \PackageWarningNoLine{frontispiece}{Missing candidate name}%
+\else
+  \frontfixednamesfont
+  \ifnum\front@candcount=1
+    \front@thecandidate
+  \else
+    \front@thecandidates
+  \fi
+  \front@punct\\
+  \the\front@candtoks
+\fi
+\end{tabular}
+\fi
+\end{tabular*}
+\par
+\vfill}
+%    \end{macrocode}
+% Eighth block: the foot. Before setting it we do, if necessary, a 
+% vertical negative skip.
+%    \begin{macrocode}
+\ifdefined\front@signatures\vskip\frontadjustforsignatures\fi
+\unless\ifdefined\front@norules\hrule\fi
+\vspace{1.5ex}
+{\frontfootfont
+ \if\@front@{foot}
+   \front@foot
+ \else
+   ANNO ACCADEMICO \front@anno
+ \fi
+ \par}
+\endtitlepage}
+%    \end{macrocode}
+% The following \verb|\else| matches the
+% \verb|\ifdefined\front@infront| several lines ahead
+%    \begin{macrocode}
+\else
+%    \end{macrocode}
+% If we get here, we are neither compiling the frontispiece, nor
+% writing to the \file{frn} file, so we provide dummy definitions for
+% all the user level commands.
+%    \begin{macrocode}
+\newcommand{\Preamble}[1]{}
+\newcommand{\Return}[1]{}
+\newcommand{\Margins}[4]{}
+\newcommand{\Logo}[2][]{}
+\newcommand{\Watermark}[2][]{}
+\newcommand{\University}[1]{}
+\newcommand{\Istitution}[1]{}
+\newcommand{\Faculty}[1]{}
+\newcommand{\Department}[1]{}
+\newcommand{\Interfaculty}[1]{}
+\newcommand{\Division}[1]{}
+\newcommand{\Course}[2][]{}
+\newcommand{\School}[1]{}
+\newcommand{\Title}[1]{}
+\newcommand{\Subtitle}[1]{}
+\newcommand{\Academicyear}[1]{}
+\newcommand{\Foot}[1]{}
+\newcommand{\Titoletto}[1]{}
+\newcommand{\Candidate}[2][]{}
+\newcommand{\Advisor}[1]{}
+\newcommand{\Coadvisor}[1]{}
+\newcommand{\NCandidate}[1]{}
+\newcommand{\NCandidates}[1]{}
+\newcommand{\NAdvisor}[2]{}
+\newcommand{\NCoadvisor}[2]{}
+\newcommand{\Punctuation}[1]{}
+
+%    \end{macrocode}
+% The following two \verb|\fi| match \verb|\ifdefined\front@infront|
+% and \verb|\iffront@write| several lines ahead
+%    \begin{macrocode}
+\fi
+\fi
+%    \end{macrocode}
+% \subsection{The external file inclusion}
+% We define a command to hold the requested file name extension.
+%    \begin{macrocode}
+\ifpdf
+  \def\front@ext{pdf}
+\else
+  \ifxetex
+    \def\front@ext{pdf}
+  \else
+    \def\front@ext{eps}
+  \fi
+\fi
+%    \end{macrocode}
+% If we use \pack{amsbook}, then the titlepage environment doesn't
+% generate the verso page, while book does.
+%    \begin{macrocode}
+\@ifclassloaded{amsbook}
+  {\def\front@cp{\null\thispagestyle{empty}\newpage
+    \advance\c@page\m@ne}}
+  {\let\front@cp\relax}
+%    \end{macrocode}
+% \begin{environment}{frontispiece}
+% The environment \env{frontispiece} goes in the main file and is
+% responsible for ending the writing of the \file{frn} file (in its final
+% part; in the initial part it typesets the front page by including
+% the pdf file if already typeset.
+% 
+% The front page commands must go before the end of this environment;
+% the best choice is, of course, to put them inside it.  Maybe a
+% key-value syntax would be preferable.
+% 
+% Now we define the environment; its purpose is to initialize the
+% mechanism and finalize it.
+%    \begin{macrocode}
+\def\frontispiece{%
+  \titlepage\null
+    \IfFileExists{\jobname-frn.\front@ext}
+    {\AddToShipoutPicture*{\includegraphics{\jobname-frn}}}
+    {\AtEndDocument{%
+     \PackageWarningNoLine{frontispiece}
+       {Remember to compile \jobname-frn with\MessageBreak
+     \ifpdf
+       pdflatex \jobname-frn%
+     \else
+       \ifxetex
+         xelatex \jobname-frn
+       \else
+         latex \jobname-frn\MessageBreak
+         dvips -o \jobname-frn.eps \jobname-frn%
+       \fi
+     \fi\MessageBreak
+     and then rerun \ifpdf pdf\fi \ifxetex xe\fi latex}}}
+  \afterpage{\thispagestyle{empty}}%
+  \endtitlepage
+  \if@twoside\front@cp\fi
+}
+\def\endfrontispiece{%
+  \front@write{\begin{document}}
+  \front@write{\preparefrontpage}
+  \front@write{\end{document}}
+  \iffront@write\immediate\closeout\front@out\fi
+}
+%    \end{macrocode}
+% \iffalse
+%</package>
+% \fi
+% \end{environment}
+% The end.
+% \Finale

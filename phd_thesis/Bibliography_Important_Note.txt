@@ -1,0 +1,48 @@
+% BIBLIOGRAPHY
+%
+% IMPORTANT: kbibtex export the field YEAR using 4 characters only. In case of multiple references 
+% with the same author/year, it sorts using the author list alphabetically. 
+% In Dalle Pezze et al 2012 (article) and Dalle Pezze et al 2012 (letter), the third surname Thien 
+% (article) is alphabetically after the third surname Shanley in letter. 
+% Therefore, the letter becomes 2012a, and the article 2012b. This is wrong! 
+% Unfortunately, it is not possible to add 'a' and 'b' manually at the end of the year since 
+% the generated .bbl file only accepts 4 characters for the field YEAR. In this case it 
+% drops the initial '2'. 
+% A solution to apply after the bibliography is finalised, is to manually adapt the automatically
+% generated .bbl file. 
+%
+%
+% Briefly, in *.bbl replace the following text:
+%\bibitem[\protect\astroncite{{Dalle Pezze} et~al.}{2012a}]{DallePezze2012b}
+%{Dalle Pezze}, P., Sonntag, A.~G., Shanley, D.~P., and Thedieck, K. (2012a).
+%\newblock {Response to Comment on "A Dynamic Network Model of mTOR Signaling
+%  Reveals TSC-Independent mTORC2 Regulation": Building a Model of the mTOR
+%  Signaling Network with a Potentially Faulty Tool}.
+%\newblock {\em Science Signaling}, 5(232):lc4.
+%
+%\bibitem[\protect\astroncite{{Dalle Pezze} et~al.}{2012b}]{DallePezze2012a}
+%{Dalle Pezze}, P., Sonntag, A.~G., Thien, A., Prentzell, M.~T., G{\"o}del, M.,
+%  Fischer, S., Neumann-Haefelin, E., Huber, T.~B., Baumeister, R., Shanley,
+%  D.~P., and Thedieck, K. (2012b).
+%\newblock {A dynamic network model of mTOR signaling reveals TSC-independent
+%  mTORC2 regulation}.
+%\newblock {\em Science Signaling}, 5(217):ra25.
+%
+%
+% with:
+%\bibitem[\protect\astroncite{{Dalle Pezze} et~al.}{2012a}]{DallePezze2012a}
+%{Dalle Pezze}, P., Sonntag, A.~G., Thien, A., Prentzell, M.~T., G{\"o}del, M.,
+%  Fischer, S., Neumann-Haefelin, E., Huber, T.~B., Baumeister, R., Shanley,
+%  D.~P., and Thedieck, K. (2012a).
+%\newblock {A dynamic network model of mTOR signaling reveals TSC-independent
+%  mTORC2 regulation}.
+%\newblock {\em Science Signaling}, 5(217):ra25.
+%
+%\bibitem[\protect\astroncite{{Dalle Pezze} et~al.}{2012b}]{DallePezze2012b}
+%{Dalle Pezze}, P., Sonntag, A.~G., Shanley, D.~P., and Thedieck, K. (2012b).
+%\newblock {Response to Comment on "A Dynamic Network Model of mTOR Signaling
+%  Reveals TSC-Independent mTORC2 Regulation": Building a Model of the mTOR
+%  Signaling Network with a Potentially Faulty Tool}.
+%\newblock {\em Science Signaling}, 5(232):lc4.
+% 
+% This solves the problem.

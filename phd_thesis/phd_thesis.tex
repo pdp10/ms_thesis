@@ -1,0 +1,248 @@
+%input macros (i.e. write your own macros file called MacroFile1.tex)
+%\include{Macros/MacroFile1}
+
+\documentclass[12pt,a4paper,oneside]{Classes/CUEDthesisPSnPDF}
+
+
+\ifpdf
+    \pdfinfo { 
+%/Title (Dynamical models of the mammalian Target of Rapamycin network in ageing)
+%               /Creator (LateX)
+%               /Producer (pdflatex)
+%               /Author (Piero Dalle Pezze)
+               /CreationDate (D:20120702085436)  %format D:YYYYMMDDhhmmss
+               /ModDate (D:20121129193521)
+%               /Subject (PhD Thesis, 2012, Newcastle University, United Kingdom)
+%               /Keywords (ageing, systems biology, mathematical modelling, mTOR network, insulin signalling, AMPK, cellular senescence, oxidative-stress response, mitochondria, FoxO, Mfn2)
+}
+
+\hypersetup{   
+               pdfauthor={Piero Dalle Pezze},
+	       pdftitle={Dynamical models of the mammalian Target of Rapamycin network in ageing},
+               pdfsubject={PhD Thesis - Newcastle University, United Kingdom - November 2012},
+               pdfkeywords={ageing, systems biology, mathematical modelling, mTOR network, insulin signalling, AMPK, cellular senescence, oxidative-stress response, mitochondria, FoxO, Mfn2},
+               pdfproducer={LaTeX with hyperref package},
+               pdfcreator={pdfLaTex}}
+
+
+
+
+    \pdfcatalog { /PageMode (/UseOutlines)
+                  /OpenAction (fitbh)  }
+\fi
+
+\title{Dynamical models of the mammalian Target of Rapamycin network in ageing}
+
+\ifpdf
+  \author{Piero Dalle Pezze}
+  \collegeordept{Institute for Ageing and Health}
+  \university{Newcastle University}
+% insert below the file name that contains the crest in-place of 'UnivShield'
+  \crest{\includegraphics[width=28mm]{UnivShield}}
+\else
+  \author{Piero Dalle Pezze}
+  \collegeordept{Institute for Ageing and Health}
+  \university{Newcastle University}
+% insert below the file name that contains the crest in-place of 'UnivShield'
+  \crest{\includegraphics[bb = 0 0 292 336, width=28mm]{UnivShield}}
+\fi
+%
+% insert below the file name that contains the crest in-place of 'UnivShield'
+% \crest{\IncludeGraphicsW{UnivShield}{40mm}{14 14 73 81}}
+%
+%\renewcommand{\submittedtext}{A thesis submitted in partial fulfilment of the requirements for the degree of}
+\submittedtext{A thesis submitted in partial fulfilment of \\the requirements for the degree of}
+\degree{Doctor of Philosophy}
+\degreedate{November 2012}
+
+% turn of those nasty overfull and underfull hboxes
+\hbadness=10000
+\hfuzz=50pt
+
+
+\onehalfspacing
+
+% Put all the style files you want in the directory StyleFiles and usepackage like this:
+%\usepackage{StyleFiles/watermark}
+
+% Override hyper links colours (for printing) and for leaving the hyperlink to the names of the sections instead of their page number.
+\hypersetup{colorlinks=true}
+
+
+%\includeonly{}
+%\includeonly{People/people, Declaration/declaration, Abstract/abstract, Acknowledgements/acknowledgements, Nomenclature/nomenclature, Chapter1/chapter1, Chapter2/chapter2, Chapter3/chapter3, Chapter4/chapter4, Chapter5/chapter5, Chapter6/chapter6}
+
+%\includeonly{People/People, Declaration/declaration, Abstract/abstract, Acknowledgements/acknowledgements, Nomenclature/nomenclature, Chapter1/chapter1, Chapter2/chapter2, Chapter3/chapter3, Chapter4/chapter4, Chapter5/chapter5, Chapter6/chapter6, Chapter7/chapter7, Chapter8/chapter8, AppendixA/appendixA,AppendixB/appendixB}
+
+%\includeonly{Chapter1/chapter1, Chapter7/chapter7, Chapter8/chapter8}
+
+
+\makenomenclature
+\makeindex
+
+
+% if bibtex is used
+%\bibliography{References/references}
+
+
+\begin{document}
+
+% \language{english}
+
+% A page with the abstract on including title and author etc may be
+% required to be handed in separately. If this is not so, then comment
+% the below 3 lines (between '\begin{abstractseparte}' and 
+% 'end{abstractseparate}'), normally like a declaration ... needs some more
+% work, mind as environment abstracts creates a new page!
+%\begin{abstractseparate}
+%  \input{Abstract/abstract}
+%\end{abstractseparate}
+
+
+
+
+% Using the watermark package which is in StyleFiles/
+% and to remove DRAFT COPY ONLY appearing on the top of all pages comment out below line
+%\watermark{DRAFT COPY ONLY}
+
+
+\maketitle
+
+%set the number of sectioning levels that get number and appear in the contents
+%\setcounter{secnumdepth}{5}
+%\setcounter{tocdepth}{5}
+
+%\clearpage
+\frontmatter % book mode only, equivalent to %\pagenumbering{roman}
+\renewcommand{\headrulewidth}{0pt} % header bar (off)
+%\addcontentsline{toc}{chapter}{People}
+\include{People/people}
+%\addcontentsline{toc}{chapter}{Declaration}
+\include{Declaration/declaration}
+%\addcontentsline{toc}{chapter}{Abstract}
+\include{Abstract/abstract}
+%\addcontentsline{toc}{chapter}{Dedication}
+%\include{Dedication/dedication}
+%\addcontentsline{toc}{chapter}{Acknowledgements}
+\include{Acknowledgements/acknowledgements}
+\renewcommand{\headrulewidth}{0.5pt} % header bar (on)
+\tableofcontents
+\listoffigures
+\listoftables
+
+% Nomenclature: 
+% It additionally requires to run the command: 
+% makeindex phd_thesis_pierodallepezze.nlo -s nomencl.ist -o phd_thesis_pierodallepezze.nls
+\clearpage
+%\addcontentsline{toc}{chapter}{Nomenclature}
+\include{Nomenclature/nomenclature}
+\printnomenclature[1.0in]  %% Print the nomenclature
+
+
+\mainmatter  % book mode only, equivalent to %\pagenumbering{arabic}
+
+\include{Chapter1/chapter1}
+\include{Chapter2/chapter2}
+\include{Chapter3/chapter3}
+\include{Chapter4/chapter4} 
+\include{Chapter5/chapter5}
+\include{Chapter6/chapter6}
+\include{Chapter7/chapter7}
+\include{Chapter8/chapter8}
+
+
+\backmatter % book mode only
+% APPENDIX
+\begin{appendices}
+\include{AppendixA/appendixA}
+\include{AppendixB/appendixB}
+\end{appendices}
+
+
+
+% BIBLIOGRAPHY
+%
+% IMPORTANT: kbibtex export the field YEAR using 4 characters only. In case of multiple references 
+% with the same author/year, it sorts using the author list alphabetically. 
+% In Dalle Pezze et al 2012 (article) and Dalle Pezze et al 2012 (letter), the third surname Thien 
+% (article) is alphabetically after the third surname Shanley in letter. 
+% Therefore, the letter becomes 2012a, and the article 2012b. This is wrong! 
+% Unfortunately, it is not possible to add 'a' and 'b' manually at the end of the year since 
+% the generated .bbl file only accepts 4 characters for the field YEAR. In this case it 
+% drops the initial '2'. 
+% A solution to apply after the bibliography is finalised, is to manually adapt the automatically
+% generated .bbl file. 
+%
+%
+% Briefly, in *.bbl replace the following text: 
+%\bibitem[\protect\astroncite{{Dalle Pezze} {\em
+%  et~al.}}{2012a}]{DallePezze2012b}
+%{Dalle Pezze}, P., Sonntag, A.~G., Shanley, D.~P., and Thedieck, K. (2012a).
+%\newblock {Response to comment on "A dynamic network model of mTOR signaling
+%  reveals TSC-independent mTORC2 regulation": building a model of the mTOR
+%  signaling network with a potentially faulty tool}.
+%\newblock {\em Science Signaling}, \textbf{5}(232):lc4.
+%
+%\bibitem[\protect\astroncite{{Dalle Pezze} {\em
+%  et~al.}}{2012b}]{DallePezze2012a}
+%{Dalle Pezze}, P., Sonntag, A.~G., Thien, A., Prentzell, M.~T., G{\"o}del, M.,
+%  Fischer, S., Neumann-Haefelin, E., Huber, T.~B., Baumeister, R., Shanley,
+%  D.~P., and Thedieck, K. (2012b).
+%\newblock {A dynamic network model of mTOR signaling reveals TSC-independent
+%  mTORC2 regulation}.
+%\newblock {\em Science Signaling}, \textbf{5}(217):ra25.
+%
+%
+% with:
+%\bibitem[\protect\astroncite{{Dalle Pezze} {\em et~al.}}{2012a}]{DallePezze2012a}
+%{Dalle Pezze}, P., Sonntag, A.~G., Thien, A., Prentzell, M.~T., G{\"o}del, M.,
+%  Fischer, S., Neumann-Haefelin, E., Huber, T.~B., Baumeister, R., Shanley,
+%  D.~P., and Thedieck, K. (2012a).
+%\newblock {A dynamic network model of mTOR signaling reveals TSC-independent
+%  mTORC2 regulation}.
+%\newblock {\em Science Signaling}, \textbf{5}(217):ra25.
+%
+%\bibitem[\protect\astroncite{{Dalle Pezze} {\em et~al.}}{2012b}]{DallePezze2012b}
+%{Dalle Pezze}, P., Sonntag, A.~G., Shanley, D.~P., and Thedieck, K. (2012b).
+%\newblock {Response to Comment on "A Dynamic Network Model of mTOR Signaling
+%  Reveals TSC-Independent mTORC2 Regulation": Building a Model of the mTOR
+%  Signaling Network with a Potentially Faulty Tool}.
+%\newblock {\em Science Signaling}, \textbf{5}(232):lc4.
+% 
+% This solves the problem.
+
+
+
+%\addcontentsline{toc}{chapter}{References}
+%\begin{singlespace}
+\begin{small}
+% requires natbib package
+%\bibliographystyle{plainnat}  % sorted
+%\bibliographystyle{abbrvnat}  % sorted
+%\bibliographystyle{unsrtnat} % as references appear
+% this is numbered bibliography
+%\bibliographystyle{Classes/CUEDbiblio}
+% this is author/year bibliography
+%\bibliographystyle{Classes/jmb} % bibliography style
+% Best option: apa or piero_thesis (an apa customised version having bold font for volume number and empatised et~al)
+%\bibliographystyle{Classes/apa}
+\bibliographystyle{Classes/piero_thesis}
+%\bibliographystyle{Classes/harvard}
+%\bibliographystyle{Classes/chicago}
+%\bibliographystyle{Classes/nature}
+
+\renewcommand{\bibname}{References} % changes default name Bibliography to References
+
+
+
+% bibliography with natbib
+\bibliography{References/references} % References file
+% bibliography with bibtex 
+%\printbibliography
+
+
+\end{small}
+%\end{singlespace}
+
+
+\end{document}
